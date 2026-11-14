@@ -1,19 +1,16 @@
-# Plate Swap Fix
+# LMSP Fika Fix
 
-[![Downloads](https://img.shields.io/github/downloads/McReaper/SPT.PlateSwapFix/total)](https://github.com/McReaper/SPT.PlateSwapFix/releases)
+[![Downloads](https://img.shields.io/github/downloads/McReaper/SPT.LMSPFikaFix/total)](https://github.com/McReaper/SPT.LMSPFikaFix/releases)
 
-Client mod for **SPT + Fika**. When you swap a plate on armor you're wearing during a raid,
-the new plate now protects you, and the old one stops counting.
-
-Made for [LMSP - Let Me Switch Plates](https://forge.sp-tarkov.com/mod/2814/lmsp-let-me-switch-plates)
-([GitHub](https://github.com/nessu1n/LetMeSwitchPlates)), which lets you change plates without
-taking your armor off. It works the same with any mod that does this. It doesn't need LMSP,
-and it doesn't change LMSP.
+Fixes [LMSP - Let Me Switch Plates](https://forge.sp-tarkov.com/mod/2814/lmsp-let-me-switch-plates)
+([GitHub](https://github.com/nessu1n/LetMeSwitchPlates)) in **Fika** raids. LMSP lets you
+change plates without taking your armor off; with this fix, the plate you put in protects
+you, and the plate you took out stops counting. LMSP itself is not changed.
 
 ## The bug
 
-In a Fika raid, after you swap a plate on armor you're wearing, until you take that armor off
-or the raid ends:
+In a Fika raid, after you swap a plate with LMSP on armor you're wearing, until you take that
+armor off or the raid ends:
 
 - **the plate you took out still protects you.** It doesn't matter where it is now (in your
   backpack, or on the ground). Hits use its class and its durability, and it's the plate that
@@ -27,21 +24,29 @@ Without Fika, this bug doesn't happen.
 
 ## Requirements
 
-- SPT 4.1 with Fika 2.4 (built against SPT 4.1.6 and Fika 2.4.4).
-- **Every player in the raid, the host included, even players who don't use LMSP.** When
-  someone shoots you, *their* game works out whether the bullet goes through, using its
-  own copy of your armor. The host does this for every bot. Each game has to see your
-  swap.
+- SPT 4.1 (built against SPT 4.1.6).
+- [Fika](https://github.com/project-fika) 2.4 (built against Fika 2.4.4).
+- [LMSP](https://forge.sp-tarkov.com/mod/2814/lmsp-let-me-switch-plates) 1.0 or later.
+- **On every player's game, the host included.** When someone shoots you, *their* game
+  works out whether the bullet goes through, using its own copy of your armor. The host
+  does this for every bot. Each game has to see your swap.
+
+The DLL doesn't declare Fika or LMSP as BepInEx dependencies: it loads without them, and
+does nothing harmful without Fika. That way a player who doesn't have LMSP yet still gets
+the fix for the other players' swaps.
 
 ## Install
 
 Extract the release zip into your SPT folder (the one with `EscapeFromTarkov.exe`), so that
-you get `BepInEx/plugins/PlateSwapFix.dll`. There are no settings.
+you get `BepInEx/plugins/LMSPFikaFix.dll`. There are no settings.
+
+If you had the earlier test build, delete `BepInEx/plugins/PlateSwapFix.dll`: it's the same
+fix under its old name.
 
 ## Check that it works
 
 1. In a raid, swap a plate on the armor you're wearing.
-2. Open `BepInEx/LogOutput.log`. The last `[Info   :Plate Swap Fix]` line names the plate,
+2. Open `BepInEx/LogOutput.log`. The last `[Info   :LMSP Fika Fix]` line names the plate,
    the armor, and every armor piece you now wear, with class and durability:
 
    ```

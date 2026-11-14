@@ -4,7 +4,7 @@ using EFT;
 using EFT.InventoryLogic;
 using SPT.Reflection.Patching;
 
-namespace PlateSwapFix.Patches
+namespace LMSPFikaFix.Patches
 {
     // Every Player (yours, the copies of the other players, the bots) registers as a view
     // of its inventory controller, which calls these two on every add and remove. They are

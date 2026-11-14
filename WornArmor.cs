@@ -5,7 +5,7 @@ using EFT;
 using EFT.InventoryLogic;
 using HarmonyLib;
 
-namespace PlateSwapFix
+namespace LMSPFikaFix
 {
     // Every Player keeps the armor it wears in _preAllocatedArmorComponents: hit
     // detection, penetration, durability loss and the plate colliders all read it.
