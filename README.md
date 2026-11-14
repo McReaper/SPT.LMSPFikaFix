@@ -63,9 +63,8 @@ Every player keeps a list of the armor they wear. Hit detection, penetration, du
 loss and the plate hitboxes all read that list.
 
 - **The game** rebuilds the list at the start of every hit.
-- **Fika** drops that, to save time on every shot. It rebuilds the list only when one of the
-  five armor equipment slots (headwear, face cover, eyewear, rig, body armor) gets a
-  different item.
+- **Fika** removes that rebuild. It rebuilds the list only when one of the five armor
+  equipment slots (headwear, face cover, eyewear, rig, body armor) gets a different item.
 
 A plate going into or out of armor you keep on doesn't change what's in those slots, so the
 list keeps the old plate.
